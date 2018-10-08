@@ -12,12 +12,11 @@ import org.springframework.stereotype.Repository;
 
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
-public class MovieController implements Serializable{
+public class MovieController {
 
     private final Logger log = Logger.getLogger(MovieController.class.getName());
     private boolean dontLoadTooMany = true ;
@@ -32,11 +31,10 @@ public class MovieController implements Serializable{
 
 
     @GetMapping("")
-    public String home()throws IOException, ClassNotFoundException{
+    public String home(){
 
         log.info("Index called");
         if (dontLoadTooMany){
-            userService.getData();
             dontLoadTooMany = false;
         }
 
@@ -76,13 +74,12 @@ public class MovieController implements Serializable{
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Movie movie)throws IOException, ClassNotFoundException {
+    public String create(@ModelAttribute Movie movie){
 
 
         log.info("some monkey is trying to create some shitty movie");
 
         userService.create(movie);
-        userService.saveData();
 
 
         return "redirect:/movie";
@@ -110,7 +107,7 @@ public class MovieController implements Serializable{
     }
 
     @GetMapping("/movie")
-    public String movie(Model model)throws IOException, ClassNotFoundException{
+    public String movie(Model model){
         List<Movie> movieList = userService.getMovies();
         model.addAttribute("Movies", movieList);
         //Movies er nøglen

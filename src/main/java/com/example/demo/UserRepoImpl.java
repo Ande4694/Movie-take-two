@@ -1,13 +1,12 @@
 package com.example.demo;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserRepoImpl implements Serializable, MovieRepo {
+public class UserRepoImpl implements MovieRepo {
 
     private ArrayList<Movie> movies = new ArrayList<>();
     private ArrayList<Movie> searched = new ArrayList<>();

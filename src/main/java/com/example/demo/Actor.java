@@ -1,8 +1,8 @@
 package com.example.demo;
 
-import java.io.Serializable;
 
-public class Actor implements Serializable {
+
+public class Actor {
 
     private String name;
     private int age;

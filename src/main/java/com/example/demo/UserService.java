@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Service
-public class UserService implements Serializable {
+public class UserService {
 
     @Autowired
     UserRepoImpl userRepo;
@@ -17,51 +17,6 @@ public class UserService implements Serializable {
 
     public UserService() {
     }
-
-    //save file
-    public void saveData()throws IOException, ClassNotFoundException {
-
-        FileOutputStream fos = new FileOutputStream("data.ser");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-
-        oos.writeObject(userRepo.getMovies());
-
-
-        oos.close();
-        fos.close();
-    }
-
-
-
-
-    //read file
-    public void getData() throws IOException, ClassNotFoundException{
-
-        File f = new File("data.ser");
-        if (f.exists()){
-
-            FileInputStream fis = new FileInputStream(f);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-
-            ArrayList<Movie> temp = new ArrayList<>( (ArrayList<Movie>) ois.readObject());
-
-            // copy
-            for (int i = 0; i<temp.size();i++){
-                userRepo.getMovies().add(temp.get(i));
-            }
-
-
-            ois.close();
-            fis.close();
-
-        }
-    }
-
-
-
-
-
 
 
 
