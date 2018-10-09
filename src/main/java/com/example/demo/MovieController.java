@@ -122,6 +122,14 @@ public class MovieController implements Serializable{
         return "movie";
     }
 
+    @GetMapping("/st")
+    public String st(){
+
+        log.info("st called");
+
+        return "st";
+    }
+
 
 
 }

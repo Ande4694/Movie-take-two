@@ -1,74 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Info about grp. 5000</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
-        .topnav a {
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-        .topnav a:hover {
-            background-color: #af4d02;
-            color: black;
-        }
-        .topnav a.active {
-            background-color: #af4d02;
-            color: white;
-        }
-        .accordion {
-            background-color: #eee;
-            color: #444;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 15px;
-            transition: 0.4s;
-        }
-        .active, .accordion:hover {
-            background-color: #ccc;
-        }
-        .panel {
-            padding: 0 18px;
-            display: none;
-            background-color: white;
-            overflow: hidden;
-        }
-        h3 {
-            position: absolute;
-            left: 1725px;
-            top: -21px;
-        }
-        .logo {
-            position: absolute;
-            right: 14px;
-            top: -2PX;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 
 <body>
 <h3> <img src="https://i.imgur.com/VKkRjuB.png"  width="150" height="50"></h3>
 <div class="topnav">
     <a href="/">IMDB</a>
-    <a href="Movie">Movie</a>
-    <a href="no">Contact</a>
-    <a class="active" href="About_us">About us</a>
+    <a href="movie">Movie</a>
+    <a href="contact">Contact</a>
+    <a class="active" href="about_us">About us</a>
 </div>
 
 <div style="padding-left:16px">
@@ -110,6 +54,6 @@
         });
     }
 </script>
-<div class="logo"> <img src="https://i.imgur.com/VKkRjuB.png" alt="Trulli" width="150" height="50"> </div>
+<div class="logo-TopRight"> <img src="https://i.imgur.com/VKkRjuB.png" alt="Trulli" width="150" height="50"> </div>
 </body>
 </html>
