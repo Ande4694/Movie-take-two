@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserRepoImpl implements MovieRepo {
 
-    private ArrayList<Movie> movies = new ArrayList<>();
-    private ArrayList<Movie> searched = new ArrayList<>();
+    private List<Movie> movies = new ArrayList<>();
+    private List<Movie> searched = new ArrayList<>();
 
 
     @Override
@@ -22,29 +22,15 @@ public class UserRepoImpl implements MovieRepo {
         movies.add(movie);
     }
 
-    @Override
-    public List<Movie> search(String title) {
-        for (int i = 0; i<movies.size();i++){
-            if (movies.get(i).getTitle().contains(title)){
-                searched.add(movies.get(i));
-            }
-        }
-        return searched;
-    }
 
-    public ArrayList<Movie> getMovies() {
+
+    public List<Movie> getMovies() {
         return movies;
     }
 
-    public void setMovies(ArrayList<Movie> movies) {
-        this.movies = movies;
-    }
 
-    public ArrayList<Movie> getSearched() {
+    public List<Movie> getSearched() {
         return searched;
     }
 
-    public void setSearched(ArrayList<Movie> searched) {
-        this.searched = searched;
-    }
 }

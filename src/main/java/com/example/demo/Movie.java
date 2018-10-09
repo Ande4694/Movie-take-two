@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Movie {
 
+    private int id;
     private String title;
     private String production;
     private String genre;
@@ -11,10 +14,6 @@ public class Movie {
 
     public List<Actor> getActorsIn() {
         return actorsIn;
-    }
-
-    public void setActorsIn(List<Actor> actorsIn) {
-        this.actorsIn = actorsIn;
     }
 
 
@@ -50,4 +49,9 @@ public class Movie {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+    public int getId() {
+        return id;
+    }
+
 }

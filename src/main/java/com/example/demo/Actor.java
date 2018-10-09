@@ -6,15 +6,15 @@ public class Actor {
 
     private String name;
     private int age;
-    private boolean female;
+
 
     public Actor() {
     }
 
-    public Actor(String name, int age, boolean female) {
+    public Actor(String name, int age) {
         this.name = name;
         this.age = age;
-        this.female = female;
+
     }
 
     public String getName() {
@@ -33,20 +33,12 @@ public class Actor {
         this.age = age;
     }
 
-    public boolean isFemale() {
-        return female;
-    }
-
-    public void setFemale(boolean female) {
-        this.female = female;
-    }
 
     @Override
     public String toString() {
         return "Actor{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
-                ", female=" + female +
                 '}';
     }
 }

@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class MovieController {
 
     private final Logger log = Logger.getLogger(MovieController.class.getName());
-    private boolean dontLoadTooMany = true ;
+
 
 
 
@@ -34,11 +34,6 @@ public class MovieController {
     public String home(){
 
         log.info("Index called");
-        if (dontLoadTooMany){
-            dontLoadTooMany = false;
-        }
-
-
 
 
         return "index";
@@ -46,7 +41,7 @@ public class MovieController {
 
 
     @GetMapping("/aboutUs")
-    public String aboutUS(){
+    public String aboutUs(){
 
         log.info("about us called");
 

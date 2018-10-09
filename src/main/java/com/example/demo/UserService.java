@@ -19,15 +19,31 @@ public class UserService {
     }
 
     // set
-    public void setMovie(){
+    public void setMovie(int id, String genre, String production, String title){
+
+
         // hvilken film skal settes?
-
-        // evt select?
-
-        // set på alle attributer
+        for (int i = 0; i<userRepo.getMovies().size();i++){
 
 
+            // hvis id matcher, id er unikt og kan kun passe på 1 film
+            if(userRepo.getMovies().get(i).getId()==(id)){
 
+
+                // set alle attributer
+                userRepo.getMovies().get(i).setGenre(genre);
+                userRepo.getMovies().get(i).setProduction(production);
+                userRepo.getMovies().get(i).setTitle(title);
+
+
+
+                // clear alle tidligere actors
+                userRepo.getMovies().get(i).getActorsIn().clear();
+
+
+                // add actors
+            }
+        }
     }
 
     // create
@@ -38,6 +54,16 @@ public class UserService {
     // delete
     public void delete(Movie movie){
         userRepo.getMovies().remove(movie);
+    }
+
+    //delete by id
+    public void deleteById(int id){
+        for (int i =0 ; i<userRepo.getMovies().size();i++){
+            if(userRepo.getMovies().get(i).getId()==id){
+
+                userRepo.getMovies().remove(i);
+            }
+        }
     }
 
     // search by title
@@ -92,6 +118,9 @@ public class UserService {
         for (int i = 0; i<userRepo.getMovies().size();i++){
 
             if(userRepo.getMovies().get(i).getActorsIn().contains(actor)){
+
+                /// MULTILOOOOOOPPPPPP ELLER HASHMAP
+
                 userRepo.getSearched().add(userRepo.getMovies().get(i));
             }
             return userRepo.getSearched();
