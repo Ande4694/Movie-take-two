@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ public class Movie {
 
     private int id;
     private String title;
-    private String production;
+    private Date production;
     private String genre;
     private List<Actor> actorsIn;
 
@@ -17,7 +18,7 @@ public class Movie {
     }
 
 
-    public Movie(String title, String production, String genre) {
+    public Movie(String title, Date production, String genre) {
         this.title = title;
         this.production = production;
         this.genre = genre;
@@ -34,11 +35,11 @@ public class Movie {
         this.title = title;
     }
 
-    public String getProduction() {
+    public Date getProduction() {
         return production;
     }
 
-    public void setProduction(String production) {
+    public void setProduction(Date production) {
         this.production = production;
     }
 

@@ -5,15 +5,15 @@ package com.example.demo;
 public class Actor {
 
     private String name;
-    private int age;
+    private int id;
 
 
     public Actor() {
     }
 
-    public Actor(String name, int age) {
+    public Actor(String name, int id) {
         this.name = name;
-        this.age = age;
+        this.id = id;
 
     }
 
@@ -25,12 +25,12 @@ public class Actor {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public int getId() {
+        return id;
     }
 
     public void setAge(int age) {
-        this.age = age;
+        this.id = id;
     }
 
 
@@ -38,7 +38,7 @@ public class Actor {
     public String toString() {
         return "Actor{" +
                 "name='" + name + '\'' +
-                ", age=" + age +
+                ", id=" + id +
                 '}';
     }
 }

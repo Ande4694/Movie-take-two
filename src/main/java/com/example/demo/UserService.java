@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public class UserService {
     }
 
     // set
-    public void setMovie(int id, String genre, String production, String title){
+    public void setMovie(int id, String genre, Date production, String title){
 
 
         // hvilken film skal settes?
@@ -67,7 +68,7 @@ public class UserService {
     }
 
     // search by title
-    public ArrayList<Movie> searchByTitle(String title){
+    public List<Movie> searchByTitle(String title){
 
         //gå gennem movies og gem alt der matcher i searched
         for (int i = 0; i<userRepo.getMovies().size();i++){
@@ -82,12 +83,12 @@ public class UserService {
     }
 
     // search by production year
-    public ArrayList<Movie> searchByYear(String year){
+    public List<Movie> searchByYear(Date year){
 
         //gå gennem movies og gem alt der matcher i searched
         for (int i = 0; i<userRepo.getMovies().size();i++){
 
-            if(userRepo.getMovies().get(i).getProduction().contains(year)){
+            if(userRepo.getMovies().get(i).getProduction()==(year)){
                 userRepo.getSearched().add(userRepo.getMovies().get(i));
             }
             return userRepo.getSearched();
@@ -97,7 +98,7 @@ public class UserService {
     }
 
     // search by production genre
-    public ArrayList<Movie> searchByGenre(String genre){
+    public List<Movie> searchByGenre(String genre){
 
         //gå gennem movies og gem alt der matcher i searched
         for (int i = 0; i<userRepo.getMovies().size();i++){
@@ -112,7 +113,7 @@ public class UserService {
     }
 
     // search by actors
-    public ArrayList<Movie> searchByActor(String actor){
+    public List<Movie> searchByActor(String actor){
 
         //gå gennem movies og gem alt der matcher i searched
         for (int i = 0; i<userRepo.getMovies().size();i++){
@@ -136,14 +137,14 @@ public class UserService {
     }
 
     // get all
-    public ArrayList<Movie> getMovies(){
+    public List<Movie> getMovies(){
 
         return userRepo.getMovies();
 
     }
 
     // get searched
-    public ArrayList<Movie> getSearched(){
+    public List<Movie> getSearched(){
 
         return userRepo.getSearched();
 
