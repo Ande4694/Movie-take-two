@@ -1,9 +1,8 @@
 package com.example.demo;
 
-import java.io.Serializable;
 import java.time.Year;
 
-public class Movie implements Serializable {
+public class Movie {
 
     private String title;
     private String production;
