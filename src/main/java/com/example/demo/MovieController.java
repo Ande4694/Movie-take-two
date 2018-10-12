@@ -81,18 +81,21 @@ public class MovieController {
         return "redirect:/movie";
     }
 
-    @PostMapping ("/search/{title}")
-    public String search(@PathVariable("title") Model model, String title){
+    @GetMapping ("/search/{title}")
+    public String search(@PathVariable("title") String title, Model model){
 
-        //userService.searchByTitle(movie);
+
         log.info("some monkey managed to search something: "+title);
-        userService.clearSearch();
-        model.addAttribute("title", userService.searchByTitle(title));
+
+        //userService.clearSearch();
+        List<Movie> searched = userService.searchByTitle(title);
+        model.addAttribute("Searched", searched);
+        log.info(userService.getSearched().toString());
 
 
 
 
-        return "redirect:/search";
+        return "search";
     }
 
     @GetMapping("/result")

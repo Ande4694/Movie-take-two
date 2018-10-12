@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserRepoImpl implements MovieRepo {
 
-    private List<Movie> movies = new ArrayList<>();
-    private List<Movie> searched = new ArrayList<>();
+    public List<Movie> movies = new ArrayList<>();
+    public List<Movie> searched = new ArrayList<>();
 
 
     @Override
@@ -22,7 +22,17 @@ public class UserRepoImpl implements MovieRepo {
         movies.add(movie);
     }
 
+    @Override
+    public String toString() {
+        return "UserRepoImpl{" +
+                "movies=" + movies +
+                ", searched=" + searched +
+                '}';
+    }
 
+    public void addToSearched(Movie movie){
+        searched.add(movie);
+    }
 
     public List<Movie> getMovies() {
         return movies;

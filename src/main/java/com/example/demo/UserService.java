@@ -76,13 +76,14 @@ public class UserService {
         //gå gennem movies og gem alt der matcher i searched
         for (int i = 0; i<userRepo.getMovies().size();i++){
 
-            if(userRepo.getMovies().get(i).getTitle().contains(title.toLowerCase())){
-                userRepo.getSearched().add(userRepo.getMovies().get(i));
+            if(userRepo.movies.get(i).getTitle().contains(title)){
+                userRepo.searched.add(userRepo.movies.get(i));
             }
-            return userRepo.getSearched();
+            return userRepo.searched;
+
         }
 
-        return userRepo.getSearched();
+        return userRepo.searched;
     }
 
     // search by production year
@@ -154,4 +155,6 @@ public class UserService {
     }
 
 
+    public void create() {
+    }
 }
