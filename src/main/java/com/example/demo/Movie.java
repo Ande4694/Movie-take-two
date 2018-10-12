@@ -9,7 +9,7 @@ public class Movie {
 
     private int id;
     private String title;
-    private Date production;
+    private String production;
     private String genre;
     private List<Actor> actorsIn;
 
@@ -18,7 +18,7 @@ public class Movie {
     }
 
 
-    public Movie(String title, Date production, String genre) {
+    public Movie(String title, String production, String genre) {
         this.title = title;
         this.production = production;
         this.genre = genre;
@@ -35,11 +35,11 @@ public class Movie {
         this.title = title;
     }
 
-    public Date getProduction() {
+    public String getProduction() {
         return production;
     }
 
-    public void setProduction(Date production) {
+    public void setProduction(String production) {
         this.production = production;
     }
 

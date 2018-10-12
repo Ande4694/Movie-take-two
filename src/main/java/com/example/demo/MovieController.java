@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.stereotype.Repository;
 
@@ -80,25 +81,29 @@ public class MovieController {
         return "redirect:/movie";
     }
 
-    @PostMapping ("/search")
-    public String search(@ModelAttribute String title){
+    @PostMapping ("/search/{title}")
+    public String search(@PathVariable("title") Model model, String title){
 
         //userService.searchByTitle(movie);
-        log.info("some monkey managed to search something");
+        log.info("some monkey managed to search something: "+title);
         userService.clearSearch();
-        userService.searchByTitle(title);
+        model.addAttribute("title", userService.searchByTitle(title));
+
+
+
 
         return "redirect:/search";
     }
 
-    @GetMapping("/search")
-    public String search(Model model){
+    @GetMapping("/result")
+    public String result(Model model){
 
         log.info("some monkey called search");
-        List<Movie> movieList = userService.getSearched();
-        model.addAttribute("searchByTitle", movieList);
+        userService.searchByTitle(userService.inputData.getInput());
+        List<Movie> searchList = userService.getSearched();
+        model.addAttribute("Searched", searchList);
 
-        return "search";
+        return "result";
     }
 
     @GetMapping("/movie")

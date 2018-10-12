@@ -15,12 +15,15 @@ public class UserService {
     @Autowired
     UserRepoImpl userRepo;
 
+    @Autowired
+    InputData inputData;
+
 
     public UserService() {
     }
 
     // set
-    public void setMovie(int id, String genre, Date production, String title){
+    public void setMovie(int id, String genre, String production, String title){
 
 
         // hvilken film skal settes?
@@ -73,7 +76,7 @@ public class UserService {
         //gå gennem movies og gem alt der matcher i searched
         for (int i = 0; i<userRepo.getMovies().size();i++){
 
-            if(userRepo.getMovies().get(i).getTitle().contains(title)){
+            if(userRepo.getMovies().get(i).getTitle().contains(title.toLowerCase())){
                 userRepo.getSearched().add(userRepo.getMovies().get(i));
             }
             return userRepo.getSearched();
@@ -83,7 +86,7 @@ public class UserService {
     }
 
     // search by production year
-    public List<Movie> searchByYear(Date year){
+    public List<Movie> searchByYear(String year){
 
         //gå gennem movies og gem alt der matcher i searched
         for (int i = 0; i<userRepo.getMovies().size();i++){
