@@ -87,7 +87,7 @@ public class MovieController {
 
         log.info("some monkey managed to search something: "+title);
 
-        //userService.clearSearch();
+        userService.clearSearch();
         List<Movie> searched = userService.searchByTitle(title);
         model.addAttribute("Searched", searched);
         log.info(userService.getSearched().toString());
@@ -98,16 +98,7 @@ public class MovieController {
         return "search";
     }
 
-    @GetMapping("/result")
-    public String result(Model model){
 
-        log.info("some monkey called search");
-        userService.searchByTitle(userService.inputData.getInput());
-        List<Movie> searchList = userService.getSearched();
-        model.addAttribute("Searched", searchList);
-
-        return "result";
-    }
 
     @GetMapping("/movie")
     public String movie(Model model){

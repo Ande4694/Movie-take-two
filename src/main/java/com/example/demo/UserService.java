@@ -13,148 +13,46 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    UserRepoImpl userRepo;
-
-    @Autowired
-    InputData inputData;
+    MovieRepo movieRepo;
 
 
-    public UserService() {
-    }
-
-    // set
-    public void setMovie(int id, String genre, String production, String title){
-
-
-        // hvilken film skal settes?
-        for (int i = 0; i<userRepo.getMovies().size();i++){
-
-
-            // hvis id matcher, id er unikt og kan kun passe på 1 film
-            if(userRepo.getMovies().get(i).getId()==(id)){
-
-
-                // set alle attributer
-                userRepo.getMovies().get(i).setGenre(genre);
-                userRepo.getMovies().get(i).setProduction(production);
-                userRepo.getMovies().get(i).setTitle(title);
-
-
-
-                // clear alle tidligere actors
-                userRepo.getMovies().get(i).getActorsIn().clear();
-
-
-                // add actors
-            }
-        }
-    }
 
     // create
     public void create(Movie movie){
-        userRepo.save(movie);
+        movieRepo.getMovies().add(movie);
     }
 
-    // delete
-    public void delete(Movie movie){
-        userRepo.getMovies().remove(movie);
-    }
-
-    //delete by id
-    public void deleteById(int id){
-        for (int i =0 ; i<userRepo.getMovies().size();i++){
-            if(userRepo.getMovies().get(i).getId()==id){
-
-                userRepo.getMovies().remove(i);
-            }
-        }
-    }
-
-    // search by title
+    // søger på titel og ligger det i "searched
     public List<Movie> searchByTitle(String title){
 
-        //gå gennem movies og gem alt der matcher i searched
-        for (int i = 0; i<userRepo.getMovies().size();i++){
-
-            if(userRepo.movies.get(i).getTitle().contains(title)){
-                userRepo.searched.add(userRepo.movies.get(i));
+        for (int i = 0; i<movieRepo.getMovies().size();i++){
+            if (movieRepo.getMovies().get(i).getTitle().toLowerCase().contains(title.toLowerCase())){
+                movieRepo.getSearched().add(movieRepo.getMovies().get(i));
             }
-            return userRepo.searched;
-
         }
 
-        return userRepo.searched;
+        return movieRepo.getSearched();
     }
 
-    // search by production year
-    public List<Movie> searchByYear(String year){
 
-        //gå gennem movies og gem alt der matcher i searched
-        for (int i = 0; i<userRepo.getMovies().size();i++){
-
-            if(userRepo.getMovies().get(i).getProduction()==(year)){
-                userRepo.getSearched().add(userRepo.getMovies().get(i));
-            }
-            return userRepo.getSearched();
-        }
-
-        return userRepo.getSearched();
-    }
-
-    // search by production genre
-    public List<Movie> searchByGenre(String genre){
-
-        //gå gennem movies og gem alt der matcher i searched
-        for (int i = 0; i<userRepo.getMovies().size();i++){
-
-            if(userRepo.getMovies().get(i).getGenre().contains(genre)){
-                userRepo.getSearched().add(userRepo.getMovies().get(i));
-            }
-            return userRepo.getSearched();
-        }
-
-        return userRepo.getSearched();
-    }
-
-    // search by actors
-    public List<Movie> searchByActor(String actor){
-
-        //gå gennem movies og gem alt der matcher i searched
-        for (int i = 0; i<userRepo.getMovies().size();i++){
-
-            if(userRepo.getMovies().get(i).getActorsIn().contains(actor)){
-
-                /// MULTILOOOOOOPPPPPP ELLER HASHMAP
-
-                userRepo.getSearched().add(userRepo.getMovies().get(i));
-            }
-            return userRepo.getSearched();
-        }
-
-        return userRepo.getSearched();
-    }
-
-    // clear search, skal bruges før hvert nyt search
+    //ryder tidligere søgninger
     public void clearSearch(){
-
-            userRepo.getSearched().clear();
+        movieRepo.getSearched().clear();
     }
 
     // get all
     public List<Movie> getMovies(){
 
-        return userRepo.getMovies();
+        return movieRepo.getMovies();
 
     }
 
     // get searched
     public List<Movie> getSearched(){
 
-        return userRepo.getSearched();
+        return movieRepo.getSearched();
 
     }
 
 
-    public void create() {
-    }
 }
