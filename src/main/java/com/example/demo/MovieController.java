@@ -81,7 +81,7 @@ public class MovieController {
         return "redirect:/movie";
     }
 
-    @GetMapping ("/search/{title}")
+/*    @GetMapping ("/search/{title}")
     public String search(@PathVariable("title") String title, Model model){
 
 
@@ -96,6 +96,17 @@ public class MovieController {
 
 
         return "search";
+    }*/
+
+    @GetMapping ("/style")
+    public String search(){
+
+
+        log.info("some monkey managed to search something: ");
+
+
+
+        return "style";
     }
 
 
