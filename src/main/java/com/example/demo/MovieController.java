@@ -1,18 +1,18 @@
 package com.example.demo;
 
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.stereotype.Repository;
 
 
-import java.io.IOException;
-import java.io.Serializable;
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -22,12 +22,17 @@ public class MovieController {
     private final Logger log = Logger.getLogger(MovieController.class.getName());
 
 
+
+
+
+
     @Autowired
     private UserService userService;
 
 
+
     @GetMapping("")
-    public String home() throws IOException, ClassNotFoundException {
+    public String home(){
 
         log.info("Index called");
 
@@ -37,7 +42,7 @@ public class MovieController {
 
 
     @GetMapping("/aboutUs")
-    public String aboutUS() {
+    public String aboutUs(){
 
         log.info("about us called");
 
@@ -45,7 +50,7 @@ public class MovieController {
     }
 
     @GetMapping("/contact")
-    public String contact() {
+    public String contact(){
 
         log.info("contact called");
 
@@ -53,7 +58,7 @@ public class MovieController {
     }
 
     @GetMapping("/create")
-    public String create(Model model) {
+    public String create(Model model){
 
         log.info("create called");
         model.addAttribute("movie", new Movie());
@@ -65,7 +70,7 @@ public class MovieController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Movie movie) throws IOException, ClassNotFoundException {
+    public String create(@ModelAttribute Movie movie){
 
 
         log.info("some monkey is trying to create some shitty movie");
@@ -76,29 +81,28 @@ public class MovieController {
         return "redirect:/movie";
     }
 
-    @PostMapping("/search")
-    public String search(@ModelAttribute String title) {
+    @GetMapping ("/search/{title}")
+    public String search(@PathVariable("title") String title, Model model){
 
-        //userService.searchByTitle(movie);
-        log.info("some monkey managed to search something");
+
+        log.info("some monkey managed to search something: "+title);
+
         userService.clearSearch();
-        userService.searchByTitle(title);
+        List<Movie> searched = userService.searchByTitle(title);
+        model.addAttribute("Searched", searched);
+        log.info(userService.getSearched().toString());
 
-        return "redirect:/search";
-    }
 
-    @GetMapping("/search")
-    public String search(Model model) {
 
-        log.info("some monkey called search");
-        List<Movie> movieList = userService.getSearched();
-        model.addAttribute("Movies", movieList);
 
         return "search";
     }
 
+
+
+
     @GetMapping("/movie")
-    public String movie(Model model) {
+    public String movie(Model model){
         List<Movie> movieList = userService.getMovies();
         model.addAttribute("Movies", movieList);
         //Movies er nøglen
@@ -110,13 +114,6 @@ public class MovieController {
         return "movie";
     }
 
-    @GetMapping("/st")
-    public String st() {
-
-        log.info("st called");
-
-        return "st";
-    }
 
 
 }

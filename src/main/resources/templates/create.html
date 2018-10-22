@@ -14,9 +14,9 @@
 <body>
 <div class="topnav">
     <a href="/">IMDB</a>
-    <a class="active" href="Movie">Movie</a>
+    <a class="active" href="movie">Movie</a>
     <a href="no">Contact</a>
-    <a href="About_us">About us</a>
+    <a href="about_us">About us</a>
 </div>
 
 <div class="container">
@@ -25,12 +25,15 @@
         <hr>
 
 
+
+
+
         <p>Enter title</p>
         <input type="text" th:field="${movie.title}"/>
         <p>Enter genre</p>
         <input type="text" th:field="${movie.genre}"/>
         <p>Enter production year</p>
-        <input type="text" th:field="${movie.production}"/>
+        <input type="date" th:field="${movie.production}"/>
 
 
         <input class="registerbtn" type="submit" value="Submit"/>
@@ -39,7 +42,7 @@
         <hr>
     </form>
 </div>
-<div class="logo-TopRight"><img src="https://i.imgur.com/VKkRjuB.png" alt="Trulli" width="150" height="50"></div>
+<div class="logo"> <img src="https://i.imgur.com/VKkRjuB.png" alt="Trulli" width="150" height="50"> </div>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 </body>
 </html>

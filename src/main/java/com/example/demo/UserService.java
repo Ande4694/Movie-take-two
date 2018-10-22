@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -12,56 +13,44 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    UserRepoImpl userRepo;
+    MovieRepo movieRepo;
 
-
-    public UserService() {
-    }
 
 
     // create
-    public void create(Movie movie) {
-        userRepo.save(movie);
+    public void create(Movie movie){
+        movieRepo.getMovies().add(movie);
     }
 
+    // søger på titel og ligger det i "searched
+    public List<Movie> searchByTitle(String title){
 
-    // delete
-    public void delete(Movie movie) {
-        userRepo.getMovies().remove(movie);
-    }
-
-
-    // search
-    public ArrayList<Movie> searchByTitle(String title) {
-        for (int i = 0; i < userRepo.getMovies().size(); i++) {
-
-            if (userRepo.getMovies().get(i).getTitle().contains(title)) {
-                userRepo.getSearched().add(userRepo.getMovies().get(i));
+        for (int i = 0; i<movieRepo.getMovies().size();i++){
+            if (movieRepo.getMovies().get(i).getTitle().toLowerCase().contains(title.toLowerCase())){
+                movieRepo.getSearched().add(movieRepo.getMovies().get(i));
             }
-            return userRepo.getSearched();
         }
 
-        return null;
+        return movieRepo.getSearched();
     }
 
-    public void clearSearch() {
 
-        userRepo.getSearched().clear();
+    //ryder tidligere søgninger
+    public void clearSearch(){
+        movieRepo.getSearched().clear();
     }
-
 
     // get all
-    public ArrayList<Movie> getMovies() {
+    public List<Movie> getMovies(){
 
-        return userRepo.getMovies();
+        return movieRepo.getMovies();
 
     }
 
-
     // get searched
-    public ArrayList<Movie> getSearched() {
+    public List<Movie> getSearched(){
 
-        return userRepo.getSearched();
+        return movieRepo.getSearched();
 
     }
 

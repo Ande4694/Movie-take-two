@@ -1,12 +1,22 @@
 package com.example.demo;
 
-import java.time.Year;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 public class Movie {
 
+    private int id;
     private String title;
     private String production;
     private String genre;
+    private List<Actor> actorsIn;
+
+    public List<Actor> getActorsIn() {
+        return actorsIn;
+    }
+
 
     public Movie(String title, String production, String genre) {
         this.title = title;
@@ -39,5 +49,20 @@ public class Movie {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", production='" + production + '\'' +
+                ", genre='" + genre + '\'' +
+                ", actorsIn=" + actorsIn +
+                '}';
     }
 }
