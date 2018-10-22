@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Style</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-Hej
+<div class="topnav">
+    <a href="/">IMDB</a>
+    <a class="active" href="movie">Movie</a>
+    <a href="/contact">contact</a>
+    <a href="/aboutUs">About us</a>
+</div>
+<h2>Search</h2>
+<div class="logo-TopRight"><img src="https://i.imgur.com/VKkRjuB.png" alt="Trulli" width="150" height="50"></div>
+<input type="text" id="myInput" placeholder="Search..." title="Type something">
 </body>
 </html>
