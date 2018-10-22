@@ -25,8 +25,8 @@ public class UserRepoImpl implements MovieRepo {
 
     @Override
     public List<Movie> search(String title) {
-        for (int i = 0; i<movies.size();i++){
-            if (movies.get(i).getTitle().contains(title)){
+        for (int i = 0; i < movies.size(); i++) {
+            if (movies.get(i).getTitle().contains(title)) {
                 searched.add(movies.get(i));
             }
         }

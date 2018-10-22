@@ -19,32 +19,23 @@ public class UserService {
     }
 
 
-
-
     // create
-    public void create(Movie movie){
+    public void create(Movie movie) {
         userRepo.save(movie);
     }
 
 
-
-
-
     // delete
-    public void delete(Movie movie){
+    public void delete(Movie movie) {
         userRepo.getMovies().remove(movie);
     }
 
 
-
-
-
-
     // search
-    public ArrayList<Movie> searchByTitle(String title){
-        for (int i = 0; i<userRepo.getMovies().size();i++){
+    public ArrayList<Movie> searchByTitle(String title) {
+        for (int i = 0; i < userRepo.getMovies().size(); i++) {
 
-            if(userRepo.getMovies().get(i).getTitle().contains(title)){
+            if (userRepo.getMovies().get(i).getTitle().contains(title)) {
                 userRepo.getSearched().add(userRepo.getMovies().get(i));
             }
             return userRepo.getSearched();
@@ -53,25 +44,22 @@ public class UserService {
         return null;
     }
 
-    public void clearSearch(){
+    public void clearSearch() {
 
-            userRepo.getSearched().clear();
+        userRepo.getSearched().clear();
     }
 
 
-
-
     // get all
-    public ArrayList<Movie> getMovies(){
+    public ArrayList<Movie> getMovies() {
 
         return userRepo.getMovies();
 
     }
 
 
-
     // get searched
-    public ArrayList<Movie> getSearched(){
+    public ArrayList<Movie> getSearched() {
 
         return userRepo.getSearched();
 

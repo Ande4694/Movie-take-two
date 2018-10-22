@@ -17,19 +17,17 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
-public class MovieController{
+public class MovieController {
 
     private final Logger log = Logger.getLogger(MovieController.class.getName());
-
 
 
     @Autowired
     private UserService userService;
 
 
-
     @GetMapping("")
-    public String home()throws IOException, ClassNotFoundException{
+    public String home() throws IOException, ClassNotFoundException {
 
         log.info("Index called");
 
@@ -39,7 +37,7 @@ public class MovieController{
 
 
     @GetMapping("/aboutUs")
-    public String aboutUS(){
+    public String aboutUS() {
 
         log.info("about us called");
 
@@ -47,7 +45,7 @@ public class MovieController{
     }
 
     @GetMapping("/contact")
-    public String contact(){
+    public String contact() {
 
         log.info("contact called");
 
@@ -55,7 +53,7 @@ public class MovieController{
     }
 
     @GetMapping("/create")
-    public String create(Model model){
+    public String create(Model model) {
 
         log.info("create called");
         model.addAttribute("movie", new Movie());
@@ -67,7 +65,7 @@ public class MovieController{
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Movie movie)throws IOException, ClassNotFoundException {
+    public String create(@ModelAttribute Movie movie) throws IOException, ClassNotFoundException {
 
 
         log.info("some monkey is trying to create some shitty movie");
@@ -78,8 +76,8 @@ public class MovieController{
         return "redirect:/movie";
     }
 
-    @PostMapping ("/search")
-    public String search(@ModelAttribute String title){
+    @PostMapping("/search")
+    public String search(@ModelAttribute String title) {
 
         //userService.searchByTitle(movie);
         log.info("some monkey managed to search something");
@@ -90,7 +88,7 @@ public class MovieController{
     }
 
     @GetMapping("/search")
-    public String search(Model model){
+    public String search(Model model) {
 
         log.info("some monkey called search");
         List<Movie> movieList = userService.getSearched();
@@ -100,7 +98,7 @@ public class MovieController{
     }
 
     @GetMapping("/movie")
-    public String movie(Model model){
+    public String movie(Model model) {
         List<Movie> movieList = userService.getMovies();
         model.addAttribute("Movies", movieList);
         //Movies er nøglen
@@ -113,13 +111,12 @@ public class MovieController{
     }
 
     @GetMapping("/st")
-    public String st(){
+    public String st() {
 
         log.info("st called");
 
         return "st";
     }
-
 
 
 }
