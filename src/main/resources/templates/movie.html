@@ -11,7 +11,7 @@
 <div class="topnav">
     <a href="/">IMDB</a>
     <a class="active" href="movie">Movie</a>
-    <a href="/contact">contact</a>
+    <a href="/contact">Contact</a>
     <a href="/aboutUs">About us</a>
 </div>
 
@@ -30,17 +30,18 @@
         <table id="myTable">
             <thead>
             <tr class="header">
-                <th style="width:25%;">Title</th>
+                <th  style="width:25%;">Title</th>
                 <th style="width:25%;">Genre</th>
                 <th style="width:25%;">Year</th>
 
             </tr>
             </thead>
             <tbody>
-            <tr th:each="movie: ${Movies}">
+            <tr th:each="movie: ${Movies}"> <a href="/aboutUs">
                 <td th:text="${movie.title}"/>
                 <td th:text="${movie.genre}"/>
                 <td th:text="${movie.production}"/>
+                </a>
             </tr>
 
             </tbody>
